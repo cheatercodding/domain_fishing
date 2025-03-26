@@ -1,9 +1,9 @@
 import tldextract
 from fuzzywuzzy import fuzz
 
-trusted_domains = ["paypal.com","google.com","spotify.com","facebook.com","microsoft.com","hepsiburada.com","trendyol.com","youtube.com"]
+trusted_domains = ["paypal.com", "google.com", "spotify.com", "facebook.com", "microsoft.com", "hepsiburada.com", "trendyol.com", "youtube.com"]
 
-#Alan adı karşılaştırma fonksiyonu
+# Alan adı karşılaştırma fonksiyonu
 def is_phishing(url):
     # URL'den domain çıkar
     extracted = tldextract.extract(url)
@@ -19,19 +19,20 @@ def is_phishing(url):
             max_similarity = similarity
             closest_match = trusted
 
-            # Sonuçları döndür
-            return domain, closest_match, max_similarity
-        
-        # Örnek phishing ve gerçek siteleri test edelim
-        urls = ["paypa1.com", "faceboook.com", "microsft.com", "hepsiburada.com","trendyol.com","youtube.com","google.com"]
+    # Sonuçları döndür
+    return domain, closest_match, max_similarity
 
-        for url in urls:
-            domain, match, score = is_phishing(url)
-            print(f"Test Edilen Domain: {domain}")
-            print(f"En Yakın Eşleşme: {match} (%{score} benzerlik)")
+# Örnek phishing ve gerçek siteleri test edelim
+urls = ["paypa1.com", "faceboook.com", "microsft.com", "hepsiburada.com", "trendyol.com", "youtube.com", "google.com"]
 
-            if score > 90:
-                print("Güvenli Site Olabilir.")
-            else:
-                print("Olası Phishing Saldırısı Olabilir.")
-                print("-"* 40)
+for url in urls:
+    domain, match, score = is_phishing(url)
+    print(f"Test Edilen Domain: {domain}")
+    print(f"En Yakın Eşleşme: {match} (%{score} benzerlik)")
+
+    if score > 90:
+        print("✅ Güvenli Site Olabilir.")
+    else:
+        print("🚨 Olası Phishing Saldırısı Olabilir.")
+    
+    print("-" * 40)
