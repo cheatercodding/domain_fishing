@@ -1,5 +1,9 @@
+import pandas as pd
 import tldextract
 from fuzzywuzzy import fuzz
+
+# Veri Setini yükleme
+data = pd.read_csv('phishing_data.csv')
 
 trusted_domains = ["paypal.com", "google.com", "spotify.com", "facebook.com", "microsoft.com", "hepsiburada.com", "trendyol.com", "youtube.com"]
 
