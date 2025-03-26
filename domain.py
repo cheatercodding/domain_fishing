@@ -23,7 +23,7 @@ def is_phishing(url):
     return domain, closest_match, max_similarity
 
 # Örnek phishing ve gerçek siteleri test edelim
-urls = ["paypa1.com", "faceboook.com", "microsft.com", "hepsiburada.com", "trendyol.com", "youtube.com", "google.com"]
+urls = ["paypa1.com", "faceboook.com", "microssft.com", "hepsiburada.com", "trendyol.com", "youtube.com", "google.com"]
 
 for url in urls:
     domain, match, score = is_phishing(url)
